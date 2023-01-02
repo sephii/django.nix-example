@@ -10,7 +10,7 @@
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
-        overlays = [ example_project.overlay.${system} ];
+        overlays = [ example_project.overlays.${system}.default ];
       };
     in {
       nixosConfigurations = {
