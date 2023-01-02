@@ -6,8 +6,8 @@ NixOS.
 You can run it in a qemu VM using the following commands:
 
 ```sh
-nixos-rebuild build-vm .#example-system
-./result/bin/run-nixos-vm -m 512m
+nixos-rebuild build-vm --flake .#example-system
+./result/bin/run-nixos-vm
 ```
 
 Login with user root, password root.
