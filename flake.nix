@@ -3,14 +3,15 @@
     nixpkgs.url = "github:NixOS/nixpkgs/release-22.11";
     django-nix.url = "github:sephii/django.nix";
     example_project.url = "github:sephii/django-nix-package-example";
+    poetry2nix.url = "github:nix-community/poetry2nix";
   };
 
-  outputs = { nixpkgs, django-nix, example_project, ... }:
+  outputs = { nixpkgs, poetry2nix, django-nix, example_project, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
-        overlays = [ example_project.overlays.${system}.default ];
+        overlays = [ poetry2nix.overlay example_project.overlays.${system}.default ];
       };
     in {
       nixosConfigurations = {
